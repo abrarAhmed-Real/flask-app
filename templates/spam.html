@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Spam Detector </h1>
+
+<form action="{{url_for('spam_detect')}}" , method="POST">
+    <textarea rows="10" cols="28" placeholder="enter email here" id="msg" name="msg" required></textarea>
+    <br>
+    <input type="submit" value="Detect">
+    </form>
+     
+
+
+     <p> <b>Email: </b> : {{email}}
+
+    <p> <b>Status: </b>  {{pred_text}} </p> 
+
+
+
+ 
+
+ 
+{% endblock %}

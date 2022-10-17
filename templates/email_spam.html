@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+
+
+
+{% block content %}
+
+<b>Email Spam and Ham predictor</b>
+<p>
+
+    I've deployed a deep learning algorithm that was trained on emails dataset with the accuracy of 97%. This model can predict wheather the email is spam or ham. I've used BOW ( bag of words) model of sklearn using CountVectorizer and 
+    the transformed the vectors using TfidiTransformer. To predict new emails I used a piple with CountVectorizer and TfidfTransformer , I then saved the trained object of the pipeline using pickle. The deep learning model was also saved so that we can predict new email. The email entered , will be preprocessed and cleaned ( removing punctuations , digits and stop words) then it will be vectorized using the pipeline. Finally the vectorized email will be fed to the email to make predictions.
+</p>
+
+<form action="{{url_for('spam_detect')}}" method="POST">
+   
+  <div class="form-group">
+    <br>
+    <label for="exampleFormControlTextarea1"><b>Please Enter the email here</b></label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="exampleFormControlTextarea1" rows="5" required></textarea>
+  </div>
+
+   <button type="submit" value="Detect" class="btn btn-primary">Submit</button>
+</form>
+
+<br>
+
+<b>Email:</b>       {{email}} <br>
+
+<b>Status:</b>      {{pred_text}}
+
+ 
+{% endblock %}
